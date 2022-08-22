@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
+import { useState } from "react";
 import { StyleSheet, Text, View } from 'react-native';
 
+import * as Font from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
+import AppLoading from 'expo-app-loading';
+
+import { globalStyle } from "./styles/style";
+
+const fonts = () => Font.loadAsync({
+  'bold': require('./assets/fonts/Poppins-Bold.ttf'),
+  'regular': require('./assets/fonts/Poppins-Regular.ttf')
+});
+
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [font, setFont] = useState(false);
+
+  if (font) {
+	  return (
+		  <View style={ globalStyle.main }>
+              <Text style={ globalStyle.title }>HELLO WORLD!</Text>
+          </View>
+      );
+  } else {
+	  return (
+          <AppLoading startAsync={ fonts }
+                      onFinish={ () => setFont(true) }
+                      onError={ console.warn }/>
+      );
+  }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
 });
