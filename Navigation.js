@@ -15,15 +15,27 @@ export default function Navigate() {
             <Stack.Screen
                 name = "Main"
                 component={Main}
-                options={{title: 'Главная страница'} }/>
+                options={
+                    {
+                        title: 'Главная страница'
+                    }
+            }/>
             <Stack.Screen
                 name = "Contacts"
                 component={Contacts}
-                options={{title: 'Контакты'} }/>
+                options={
+                    {
+                        title: 'Контакты'
+                    }
+            }/>
             <Stack.Screen
                 name = "FullInfo"
                 component={FullInfo}
-                options={{title: 'Текст статьи'} }/>
+                options={
+                    {
+                        title: 'Текст статьи'
+                    }
+            }/>
         </Stack.Navigator>
     </NavigationContainer>;
 }
